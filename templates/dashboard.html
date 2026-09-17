@@ -312,7 +312,10 @@
                 <tbody>
                     {% for key in keys %}
                     <tr>
-                        <td style="font-family: monospace; color: #F90080;">{{ key.key }}</td>
+                        <td style="font-family: monospace; color: #F90080;">
+                            {{ key.key }}
+                            <button onclick="copyKey('{{ key.key }}')" style="margin-left:8px;padding:4px 10px;background:rgba(249,0,128,0.15);border:1px solid rgba(249,0,128,0.3);border-radius:6px;color:#F90080;font-size:11px;font-weight:700;cursor:pointer;">COPIAR</button>
+                        </td>
                         <td>{{ key.duration_days }} dias</td>
                         <td><span class="status {{ key.status }}">{{ key.status }}</span></td>
                         <td>{{ key.created_at[:16] }}</td>
@@ -330,5 +333,20 @@
             </table>
         </div>
     </div>
+    <script>
+    function copyKey(key) {
+        navigator.clipboard.writeText(key).then(function() {
+            alert('Key copiada: ' + key);
+        }).catch(function() {
+            var el = document.createElement('textarea');
+            el.value = key;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Key copiada!');
+        });
+    }
+    </script>
 </body>
 </html>
