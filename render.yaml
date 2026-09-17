@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tefvx-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ADMIN_PASSWORD
+        value: tefvx@admin
+      - key: SECRET_KEY
+        generateValue: true

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tefvx — Admin Login</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(249, 0, 128, 0.3);
+            border-radius: 24px;
+            padding: 48px 32px;
+            backdrop-filter: blur(20px);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo h1 {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #F90080, #ff3399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        .logo p {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        input {
+            width: 100%;
+            padding: 16px 18px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(249, 0, 128, 0.2);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #F90080;
+            box-shadow: 0 0 0 3px rgba(249, 0, 128, 0.1);
+        }
+        button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #F90080, #ff3399);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 0, 128, 0.4);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .alert {
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            color: #ff3b30;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>tefvx</h1>
+            <p>PAINEL ADMIN</p>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="form-group">
+                <label>Senha de Administrador</label>
+                <input type="password" name="password" placeholder="Digite a senha" required autofocus>
+            </div>
+            <button type="submit">ENTRAR</button>
+        </form>
+    </div>
+</body>
+</html>
